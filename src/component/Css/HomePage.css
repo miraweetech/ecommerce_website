@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.slider_section {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-image: url('../image/hero-bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+  
+.detail-box {
+    background: rgba(0, 0, 0, 0);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 75px 0 0 30px;
+}
+  
+.detail-box h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: 'Dancing Script', cursive;
+}
+  
+.detail-box p {
+    font-size: 14px;
+    margin-bottom: 20px;
+    font-family: "Open Sans", sans-serif;
+}
+  
+.btn-box .btn1 {
+    background-color: #ffbe33;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+  
+.btn-box .btn1:hover {
+    background-color: #e6a52a;
+    color: white;
+}
+  
+.carousel-item {
+    display: none;
+}
+  
+.carousel-item.active {
+    display: block;
+}
+  
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.carousel-indicators li {
+    background-color: #ffbe33;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+  
+.carousel-indicators .active {
+    background-color: white;
+}
+  
+.offer_section {
+    /* padding-bottom: 50px;
+    background-color: #f8f9fa; */
+    margin: 80px 0;
+}
+  
+.offer_container .box {
+    background-color: #10141a;
+    padding: 0px 20px;
+    border-radius: 15px;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    width: 100%;
+}
+  
+.offer_container .box .img-box {
+    width: 40%;
+    padding: 10px;
+}
+
+.offer_container .box .img-box img {
+    border-radius: 50%;
+    max-width: 100%;
+    border: 5PX solid #ffbe33;
+}
+  
+.offer_container .box .detail-box {
+    width: 45%;
+    padding: 0;
+    /* text-align: center; */
+    color: white;
+}
+  
+.offer_container .box .detail-box h5 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.offer_container .box .detail-box button{
+    background-color: #ffbe33;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    border:  none;
+}
+  
+.offer_container .box .detail-box h6 {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+  
+.offer_container .box .detail-box h6 span {
+    color: white;
+}
+  

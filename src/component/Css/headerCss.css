@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container-fluid{
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    height: 70px;
+    padding: auto 70px;
+}
+.logo{
+    color: white;
+}
+.logo ul {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    font-size: medium;
+    text-transform: uppercase;
+    align-items: center;
+}
+.logo ul button {
+    background-color: #ffbe33;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+}
