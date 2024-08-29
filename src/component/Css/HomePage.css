@@ -17,21 +17,21 @@
     background-size: cover;
 }
   
-.detail-box {
+.detail-box1 {
     background: rgba(0, 0, 0, 0);
     padding: 20px;
     border-radius: 10px;
     margin: 75px 0 0 30px;
 }
   
-.detail-box h1 {
+.detail-box1 h1 {
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 20px;
     font-family: 'Dancing Script', cursive;
 }
   
-.detail-box p {
+.detail-box1 p {
     font-size: 14px;
     margin-bottom: 20px;
     font-family: "Open Sans", sans-serif;
@@ -83,45 +83,42 @@
 }
   
 .offer_section {
-    /* padding-bottom: 50px;
-    background-color: #f8f9fa; */
     margin: 80px 0;
 }
   
-.offer_container .box {
+.offer_container .box1 {
     background-color: #10141a;
     padding: 0px 20px;
     border-radius: 15px;
     display: flex;
-    /* align-items: center; */
+    align-items: center;
     justify-content: center;
     width: 100%;
 }
   
-.offer_container .box .img-box {
+.offer_container .box1 .img-box1 {
     width: 40%;
     padding: 10px;
 }
 
-.offer_container .box .img-box img {
+.offer_container .box1 .img-box1 img {
     border-radius: 50%;
     max-width: 100%;
     border: 5PX solid #ffbe33;
 }
   
-.offer_container .box .detail-box {
+.offer_container .box1 .detail-box2 {
     width: 45%;
     padding: 0;
-    /* text-align: center; */
     color: white;
 }
   
-.offer_container .box .detail-box h5 {
+.offer_container .box1 .detail-box2 h5 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
 }
-.offer_container .box .detail-box button{
+.offer_container .box1 .detail-box2 button{
     background-color: #ffbe33;
     color: white;
     padding: 10px 20px;
@@ -130,13 +127,135 @@
     border:  none;
 }
   
-.offer_container .box .detail-box h6 {
+.offer_container .box1 .detail-box2 h6 {
     font-size: 20px;
     font-weight: bold;
     padding: 5px 10px;
 }
-  
-.offer_container .box .detail-box h6 span {
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.heading_container.heading_center {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.heading_container h2 {
+    font-size: 34px;
+    font-weight: 600;
+    color: #333;
+    text-transform: capitalize;
+}
+
+.filters_menu {
+    list-style: none;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.filters_menu li {
+    display: inline-block;
+    margin: 0 15px;
+    cursor: pointer;
+    padding: 5px 15px;
+    font-size: 17px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.filters_menu li:hover,
+.filters_menu .active {
+    background-color: #f8b400;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box {
+    background: linear-gradient(to bottom, #f1f2f3 25px, #222831 25px);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(214, 193, 193, 0.1);
+    transition: transform 0.3s ease;
+    height: 450px;
+    margin-top: 30px;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+}
+
+.img-box {
+    width: 100%;
+    height: 230px;
+    padding: 15px;
+    text-align: center;
+    border-radius:  20px 20px 0 40px;
+    background: #f1f2f3;
+}
+
+.img-box img {
+    width: 80%;
+    height: 80%;
+}
+
+.detail-box {
+    height: 220px;
+    padding: 20px;
+}
+
+.detail-box h5 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
     color: white;
 }
+
+.detail-box p {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.options h6 {
+    font-size: 22px;
+    color: white;
+    /* margin-right: 10px; */
+}
+.options .cart-btn{
+    background-color: #f8b400;
+    border: none;
+    padding: 9px 15px;
+    border-radius: 50%;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+    .filters_menu li {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+    .grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
   

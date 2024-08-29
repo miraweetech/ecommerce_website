@@ -1,11 +1,13 @@
 import React from "react";
 
 const Footer = () => {
-    return(
-        <>
-            <h1>hello</h1>
-        </>
-    )
-}
+  return (
+    <>
+      <div style={{ textAlign: "center", marginTop: '60px' }}>
+        <p>© 2024 All Rights Reserved By Free Html Templates</p>
+      </div>
+    </>
+  );
+};
 
-export default Footer
+export default Footer;

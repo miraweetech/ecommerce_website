@@ -4,13 +4,13 @@ import Footer from "../Footer/Footer";
 import { Outlet } from "react-router-dom";
 
 const Outlets = () => {
-    return(
-        <>
-            <Header/>
-            <Outlet/>
-            <Footer/>
-        </>
-    )
-}
+  return (
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
 
-export default Outlets
+export default Outlets;

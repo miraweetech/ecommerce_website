@@ -1,12 +1,14 @@
 import "./App.css";
-import Header from "./component/Header/Header";
 import Navigation from "./component/Navigation/Navigation";
-import Outlet from "./component/Outlet/Outlet";
+import { Provider } from "react-redux";
+import { store } from "./Redux/Store";
 
 function App() {
   return (
     <>
-      <Navigation />
+      <Provider store={store}>
+        <Navigation/>
+      </Provider>
     </>
   );
 }
