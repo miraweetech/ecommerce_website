@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "../Css/HomePage.css";
 import o1 from "../image/o1.jpg";
 import o2 from "../image/o2.jpg";
@@ -12,6 +12,7 @@ import f6 from "../image/f6.png";
 import f7 from "../image/f7.png";
 import f8 from "../image/f8.png";
 import f9 from "../image/f9.png";
+import { addItem, showCart } from "../../Redux/Reducers/CartSlice";
 
 const images = { o1, o2 };
 const menuItems = [
@@ -99,7 +100,17 @@ const menuItems = [
 ];
 
 const HomePage = () => {
+  const dispatch = useDispatch();
   const offers = useSelector((state) => state.home.offers);
+
+  const handleOrderOnline = () => {
+    dispatch(showCart());
+  };
+
+  const handleAddToCart = (item) => {
+    dispatch(addItem(item));
+    dispatch(showCart());
+  };
 
   return (
     <>
@@ -128,7 +139,9 @@ const HomePage = () => {
                           ipsam.
                         </p>
                         <div className="btn-box">
-                          <button className="btn1">Order now</button>
+                          <button className="btn1" onClick={handleOrderOnline}>
+                            Order now
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -212,10 +225,10 @@ const HomePage = () => {
                           <h6>{item.price}</h6>
                           <button
                             className="cart-btn"
-                            // onClick={}
+                            onClick={() => handleAddToCart(item)}
                           >
                             <i
-                              class="fa fa-shopping-cart"
+                              className="fa fa-shopping-cart"
                               aria-hidden="true"
                               style={{ color: "white" }}
                             ></i>

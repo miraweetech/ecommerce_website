@@ -31,7 +31,7 @@ const Cart = () => {
       <div className="cart-container">
         <div className="cart">
           <h2>In Your Cart</h2>
-          <button onClick={handleCloseCart}>
+          <button className="close-btn" onClick={handleCloseCart} aria-label="Close Cart">
             <i className="fa fa-times" aria-hidden="true"></i>
           </button>
         </div>
@@ -43,17 +43,19 @@ const Cart = () => {
             </div>
             <div className="cart-item-name">
               <h4>{item.name}</h4>
-              <p onClick={() => handleRemoveItem(item.id)}>+</p>
+              <button className="remove-btn" onClick={() => handleRemoveItem(item.id)} aria-label="Remove Item">
+                <i className="fa fa-minus" aria-hidden="true"></i>
+              </button>
             </div>
             <div>
-              <p className="cart-item-price">${item.price.toFixed(2)}</p>
+              <p className="cart-item-price">${Number(item.price).toFixed(2)}</p>
             </div>
           </div>
         ))}
 
         <div className="cart-total">
           <p>Subtotal</p>
-          <p>${totalAmount.toFixed(2)}</p>
+          <p>${Number(totalAmount).toFixed(2)}</p>
         </div>
         <button className="order-btn" onClick={handleOrderNow}>
           Order Now
@@ -65,4 +67,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
