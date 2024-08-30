@@ -1,12 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit"
-import headerSlice from "./Reducers/headerSlice"
-import homeSlice from "./Reducers/homeSlice"
-import AuthSlice from "./Reducers/AuthSlice"
+import { configureStore } from "@reduxjs/toolkit";
+import homeSlice from "./Reducers/homeSlice";
+import AuthSlice from "./Reducers/AuthSlice";
+import CartSlice from "./Reducers/CartSlice";
+import CheckoutSlice from "./Reducers/CheckoutSlice";
 
 export const store = configureStore({
-    reducer: {
-        header: headerSlice,
-        home: homeSlice,
-        auth: AuthSlice
-    }
-})
+  reducer: {
+    home: homeSlice,
+    auth: AuthSlice,
+    cart: CartSlice,
+    checkout: CheckoutSlice,
+  },
+});

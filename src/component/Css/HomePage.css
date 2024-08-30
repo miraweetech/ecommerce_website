@@ -43,6 +43,7 @@
     padding: 10px 20px;
     border-radius: 20px;
     text-decoration: none;
+    border: none;
 }
   
 .btn-box .btn1:hover {

@@ -11,7 +11,7 @@ const homeSlice = createSlice({
   name: "home",
   initialState,
   reducers: {
-    // Add any reducers if you need to handle actions
+    
   },
 });
 

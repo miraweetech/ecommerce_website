@@ -1,0 +1,47 @@
+.checkout-container {
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+    vertical-align: middle;
+    background: #fff;
+    text-align: left;
+    padding: 5px 20px 20px;
+    margin: auto;
+    box-shadow: 5px 5px 5px 5px #cac9c9;
+  }
+  
+.checkout-form {
+    width: 100%;
+    padding: 10px;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+  
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.state-zip-container {
+    display: flex;
+    justify-content: space-between;
+}
+  
+.state-zip-container .input-field {
+    width: 48%;
+}
+
+.apply-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #ccc;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

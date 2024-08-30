@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector} from "react-redux";
 import "../Css/HomePage.css";
 import o1 from "../image/o1.jpg";
 import o2 from "../image/o2.jpg";
@@ -13,7 +13,7 @@ import f7 from "../image/f7.png";
 import f8 from "../image/f8.png";
 import f9 from "../image/f9.png";
 
-const images = { o1, o2 }; // Mapping images to keys
+const images = { o1, o2 };
 const menuItems = [
   {
     id: 1,
@@ -128,9 +128,7 @@ const HomePage = () => {
                           ipsam.
                         </p>
                         <div className="btn-box">
-                          <a href="" className="btn1">
-                            Order Now
-                          </a>
+                          <button className="btn1">Order now</button>
                         </div>
                       </div>
                     </div>
@@ -212,7 +210,10 @@ const HomePage = () => {
                         <p>{item.description}</p>
                         <div className="options">
                           <h6>{item.price}</h6>
-                          <button className="cart-btn">
+                          <button
+                            className="cart-btn"
+                            // onClick={}
+                          >
                             <i
                               class="fa fa-shopping-cart"
                               aria-hidden="true"
