@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { showCart } from "../../Redux/Reducers/CartSlice";
+import { showCartPage } from "../../Redux/Reducers/CartPageSlice";
 import "../Css/HomePage.css";
 import o1 from "../image/o1.jpg";
 import o2 from "../image/o2.jpg";
@@ -12,94 +14,97 @@ import f6 from "../image/f6.png";
 import f7 from "../image/f7.png";
 import f8 from "../image/f8.png";
 import f9 from "../image/f9.png";
-import { addItem, showCart } from "../../Redux/Reducers/CartSlice";
-
-const images = { o1, o2 };
-const menuItems = [
-  {
-    id: 1,
-    category: "pizza",
-    name: "Delicious Pizza",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: "$20",
-    image: f1,
-  },
-  {
-    id: 2,
-    category: "burger",
-    name: "Delicious Burger",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: "$15",
-    image: f2,
-  },
-  {
-    id: 3,
-    category: "pizza",
-    name: "Delicious Pizza",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: "$17",
-    image: f3,
-  },
-  {
-    id: 4,
-    category: "pasta",
-    name: "Delicious Pasta",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: "$18",
-    image: f4,
-  },
-  {
-    id: 5,
-    category: "fries",
-    name: "French Fries",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: "$10",
-    image: f5,
-  },
-  {
-    id: 6,
-    category: "pizza",
-    name: "Delicious Pizza",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: "$15",
-    image: f6,
-  },
-  {
-    id: 7,
-    category: "burger",
-    name: "Tasty Burger",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: "$12",
-    image: f7,
-  },
-  {
-    id: 8,
-    category: "burger",
-    name: "Tasty Burger",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: "$14",
-    image: f8,
-  },
-  {
-    id: 9,
-    category: "pasta",
-    name: "Delicious Pasta",
-    description:
-      "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
-    price: "$10",
-    image: f9,
-  },
-];
+import about from '../image/about-img-removebg.png'
+import { useNavigate } from "react-router-dom";
+import { formToJSON } from "axios";
 
 const HomePage = () => {
+  const [menuItems, setMenuItems] = useState([
+    {
+      id: 1,
+      category: "pizza",
+      name: "Delicious Pizza",
+      description:
+        "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
+      price: 20,
+      image: f1,
+    },
+    {
+      id: 2,
+      category: "burger",
+      name: "Delicious Burger",
+      description:
+        "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
+      price: 15,
+      image: f2,
+    },
+    {
+      id: 3,
+      category: "pizza",
+      name: "Delicious Pizza",
+      description:
+        "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
+      price: 17,
+      image: f3,
+    },
+    {
+      id: 4,
+      category: "pasta",
+      name: "Delicious Pasta",
+      description:
+        "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
+      price: 18,
+      image: f4,
+    },
+    {
+      id: 5,
+      category: "fries",
+      name: "French Fries",
+      description:
+        "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
+      price: 10,
+      image: f5,
+    },
+    {
+      id: 6,
+      category: "pizza",
+      name: "Delicious Pizza",
+      description:
+        "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
+      price: 15,
+      image: f6,
+    },
+    {
+      id: 7,
+      category: "burger",
+      name: "Tasty Burger",
+      description:
+        "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
+      price: 12,
+      image: f7,
+    },
+    {
+      id: 8,
+      category: "burger",
+      name: "Tasty Burger",
+      description:
+        "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
+      price: 14,
+      image: f8,
+    },
+    {
+      id: 9,
+      category: "pasta",
+      name: "Delicious Pasta",
+      description:
+        "Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque",
+      price: 10,
+      image: f9,
+    },
+  ]);
+  const images = { o1, o2 };
+
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const offers = useSelector((state) => state.home.offers);
 
@@ -107,9 +112,9 @@ const HomePage = () => {
     dispatch(showCart());
   };
 
-  const handleAddToCart = (item) => {
-    dispatch(addItem(item));
-    dispatch(showCart());
+  const handleItemClick = (item) => {
+    // dispatch(showCartPage(item));
+    navigate("/cartpage", { state: { item } });
   };
 
   return (
@@ -180,7 +185,9 @@ const HomePage = () => {
                       <h6>
                         <span>{offer.discount}</span> Off
                       </h6>
-                      <button className="btn1">Order Now</button>
+                      <button className="btn1" onClick={handleOrderOnline}>
+                        Order Now
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -216,29 +223,51 @@ const HomePage = () => {
                   <div className="box">
                     <div>
                       <div className="img-box">
-                        <img src={item.image} alt={item.name} />
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          onClick={() => handleItemClick(item)}
+                          style={{ cursor: "pointer" }}
+                        />
                       </div>
                       <div className="detail-box">
                         <h5>{item.name}</h5>
                         <p>{item.description}</p>
                         <div className="options">
-                          <h6>{item.price}</h6>
-                          <button
-                            className="cart-btn"
-                            onClick={() => handleAddToCart(item)}
-                          >
-                            <i
-                              className="fa fa-shopping-cart"
-                              aria-hidden="true"
-                              style={{ color: "white" }}
-                            ></i>
-                          </button>
+                          <h6>${item.price}</h6>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="about_section layout_padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 ">
+              <div class="img-box1">
+                <img src={about} alt="about-img" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="detail-box1">
+                <div class="heading_container1">
+                  <h2>We Are Feane</h2>
+                </div>
+                <p>
+                  There are many variations of passages of Lorem Ipsum
+                  available, but the majority have suffered alteration in some
+                  form, by injected humour, or randomised words which don't look
+                  even slightly believable. If you are going to use a passage of
+                  Lorem Ipsum, you need to be sure there isn't anything
+                  embarrassing hidden in the middle of text. All
+                </p>
+              </div>
             </div>
           </div>
         </div>

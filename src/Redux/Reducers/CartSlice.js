@@ -1,61 +1,85 @@
+// import { createSlice } from "@reduxjs/toolkit";
+
+// const cartSlice = createSlice({
+//   name: "cart",
+//   initialState: {
+//     items: [],
+//     totalAmount: 0,
+//     showCart: false,
+//   },
+//   reducers: {
+//     addItem: (state, action) => {
+//       state.items.push(action.payload);
+//       state.totalAmount += action.payload.price;
+//     },
+//     removeItem: (state, action) => {
+//       const id = action.payload;
+//       const itemIndex = state.items.findIndex((item) => item.id === id);
+//       if (itemIndex !== -1) {
+//         state.totalAmount -= state.items[itemIndex].price;
+//         state.items.splice(itemIndex, 1);
+//       }
+//     },
+//     showCart: (state) => {
+//       state.showCart = true;
+//     },
+//     hideCart: (state) => {
+//       state.showCart = false;
+//     },
+//   },
+// });
+
+// export const { addItem, removeItem, showCart, hideCart } = cartSlice.actions;
+// export default cartSlice.reducer;
+
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  items: [],
-  totalQuantity: 0,
-  totalAmount: 0,
-  showCart: false, 
-};
-
-const CartSlice = createSlice({
+const cartSlice = createSlice({
   name: "cart",
-  initialState,
+  initialState: {
+    items: [],
+    totalAmount: 0,
+    showCart: false,
+  },
   reducers: {
-    addItem(state, action) {
-      const newItem = action.payload;
-      const existingItem = state.items.find((item) => item.id === newItem.id);
-      state.totalQuantity++;
-      if (!existingItem) {
-        state.items.push({
-          id: newItem.id,
-          name: newItem.name,
-          price: newItem.price,
-          quantity: 1,
-          totalPrice: newItem.price,
-        });
-        state.totalAmount += newItem.price;
+    addItem: (state, action) => {
+      const existingItemIndex = state.items.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      if (existingItemIndex >= 0) {
+        // Item already exists in the cart, increase quantity
+        state.items[existingItemIndex].quantity += 1;
+        state.totalAmount += state.items[existingItemIndex].price;
       } else {
-        existingItem.quantity++;
-        existingItem.totalPrice += newItem.price;
-        state.totalAmount += newItem.price;
+        // Item doesn't exist in the cart, add as new item with quantity 1
+        state.items.push({ ...action.payload, quantity: 1 });
+        state.totalAmount += action.payload.price;
       }
     },
-    removeItem(state, action) {
+    removeItem: (state, action) => {
       const id = action.payload;
-      const existingItem = state.items.find((item) => item.id === id);
-      state.totalQuantity--;
-      if (existingItem.quantity === 1) {
-        state.items = state.items.filter((item) => item.id !== id);
-        state.totalAmount -= existingItem.price;
-      } else {
-        existingItem.quantity--;
-        existingItem.totalPrice -= existingItem.price;
-        state.totalAmount -= existingItem.price;
+      const existingItemIndex = state.items.findIndex((item) => item.id === id);
+
+      if (existingItemIndex >= 0) {
+        if (state.items[existingItemIndex].quantity > 1) {
+          // Decrease quantity
+          state.items[existingItemIndex].quantity -= 1;
+          state.totalAmount -= state.items[existingItemIndex].price;
+        } else {
+          // Remove item from cart
+          state.totalAmount -= state.items[existingItemIndex].price;
+          state.items.splice(existingItemIndex, 1);
+        }
       }
     },
-    clearCart(state) {
-      state.items = [];
-      state.totalQuantity = 0;
-      state.totalAmount = 0;
-    },
-    showCart(state) {
+    showCart: (state) => {
       state.showCart = true;
     },
-    hideCart(state) {
+    hideCart: (state) => {
       state.showCart = false;
     },
   },
 });
 
-export const { addItem, removeItem, clearCart, showCart, hideCart } = CartSlice.actions; // Export all actions
-export default CartSlice.reducer;
+export const { addItem, removeItem, showCart, hideCart } = cartSlice.actions;
+export default cartSlice.reducer;

@@ -15,11 +15,7 @@ const Header = () => {
     navigate("/signin");
   };
 
-  const handleAddToCart = () => {
-    navigate("/addtocart");
-  };
-
-  const handleOrderOnline = () => {
+  const handleMyCart = () => {
     dispatch(showCart());
   };
 
@@ -47,23 +43,15 @@ const Header = () => {
               ></i>
             </li>
             <li>
-              <i
-                className="fa fa-shopping-cart"
-                aria-hidden="true"
-                onClick={handleAddToCart}
-              ></i>
-            </li>
-            <li>
               <i className="fa fa-search" aria-hidden="true"></i>
             </li>
-            <button onClick={handleOrderOnline}>Add To Cart</button>
+            <button onClick={handleMyCart}>My Cart</button>
           </ul>
         </div>
       </div>
-      {isCartVisible && <Cart />} 
+      {isCartVisible && <Cart />}
     </>
   );
 };
 
 export default Header;
-

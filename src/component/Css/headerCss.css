@@ -12,6 +12,11 @@
     text-align: center;
     height: 70px;
     padding: auto 70px;
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    right: 0;
+    z-index: 1000; 
 }
 .logo{
     color: white;
